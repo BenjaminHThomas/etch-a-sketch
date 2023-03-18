@@ -3,6 +3,12 @@
     background-color: lightgray;
     justify-content: space-evenly;
     flex-direction: column;
-    height: 97vh;
-    width: 98vw;
+    height: 92vh;
+    /*width: 98vw;*/
+}
+
+.sliderBox{
+    display: flex;
+    justify-content: center;
+    padding: 2vh;
 }

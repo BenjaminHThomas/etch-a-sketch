@@ -1,9 +1,9 @@
 // Step 1: create a 16 x 16 grid of square divs
 
-function init(){
+function init(size = 16){
     // initialises the 16 x 16 grid of square divs
-    let parent = document.querySelector(".gridContainer")
-    let rowDiv = document.createElement("div");
+    const parent = document.querySelector(".gridContainer")
+    const rowDiv = document.createElement("div");
 
     rowDiv.className = "row";
     rowDiv.style.display = "flex";
@@ -13,13 +13,30 @@ function init(){
     box.className = "box";
     box.style.flexGrow = 1;
 
-    for (var i = 0; i < 16; i++){
+    for (var i = 0; i < size; i++){
         rowDiv.appendChild(box.cloneNode(true));
     };
 
-    for (var i = 0; i < 16; i++){
+    for (var i = 0; i < size; i++){
         parent.appendChild(rowDiv.cloneNode(true));
     };
 };
 
 init();
+
+const update = () => {
+    let box = document.querySelectorAll(".box")
+    box.forEach(box => box.addEventListener('mouseenter', function(){
+        const hue = Math.floor(Math.random() * 360); // Generate a random hue value
+        box.style.backgroundColor = `hsl(${hue}, 50%, 50%)`; // Set the background color with the random hue value
+    }))
+};
+update();
+
+
+let size = document.getElementById("size")
+size.addEventListener("input", function() {
+    document.querySelector(".gridContainer").innerHTML = '' //wipe all child nodes
+    init(size = this.value)
+    update();
+})

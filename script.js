@@ -17,8 +17,6 @@ function init(){
         rowDiv.appendChild(box.cloneNode(true));
     };
 
-    rowDiv.style.display = "flex"
-
     for (var i = 0; i < 16; i++){
         parent.appendChild(rowDiv.cloneNode(true));
     };
